@@ -1,0 +1,51 @@
+name: Registry
+
+on:
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  TZ: Asia/Shanghai
+
+jobs:
+  registry:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Docker
+        run: |
+          docker version
+          docker info
+
+      - name: Test Registry
+        run: |
+          output_file="test_results.md"
+          image="library/busybox:latest"
+
+          echo "# Test Results" > $output_file
+          echo "" >> $output_file
+          echo "| Registry URL | Status |" >> $output_file
+          echo "| ------------ | ------ |" >> $output_file
+
+          while IFS= read -r registry
+          do
+             echo "::group::Test $registry/$image"
+             docker pull $registry/$image \
+               && (echo -e "\033[32m$registry is good\033[0m" \
+                  ; echo "::notice file=README.md,line=1,col=0::✅ [ $registry ] is good" \
+                  ; echo "| $registry | ✅ Good |" >> $output_file) \
+               || (echo -e "\033[31m$registry is outdated\033[0m" \
+                  ; echo "::error file=README.md,line=1,col=0::❌ [ $registry ] is outdated" \
+                  ; echo "| $registry | ❌ Outdated |" >> $output_file)
+             docker rmi $registry/$image || true
+             echo "::endgroup::"
+          done < registries.txt
+          echo "TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+
+      - name: Upload to repository
+        uses: stefanzweifel/git-auto-commit-action@master
+        with:
+          commit_message: Update test results for registry check at ${{ env.TIME }}
