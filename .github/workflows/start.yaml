@@ -1,4 +1,4 @@
-name: Check
+name: Start
 
 on:
   schedule:
@@ -10,7 +10,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  check:
+  start:
     runs-on: ubuntu-latest
 
     steps:
