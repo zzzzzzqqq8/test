@@ -48,10 +48,10 @@ jobs:
 
              if [ $pull_exit_code -eq 0 ]; then
                status="✅ 正常"
-               success_records+=("| $mirror | $status | $formatted_elapsed_time |")
+               success_records+=("$mirror | $status | $formatted_elapsed_time")
              else
                status="❌ 失败"
-               fail_records+=("| $mirror | $status | $formatted_elapsed_time |")
+               fail_records+=("$mirror | $status | $formatted_elapsed_time")
              fi
 
              docker rmi $mirror/$image || true
@@ -59,11 +59,11 @@ jobs:
 
           IFS=$'\n' sorted_success=($(sort -t '|' -k 3 -n <<<"${success_records[*]}"))
           for record in "${sorted_success[@]}"; do
-            echo "$record" >>"$output_file"
+            echo "| $record |" >>"$output_file"
           done
 
           for record in "${fail_records[@]}"; do
-            echo "$record" >>"$output_file"
+            echo "| $record |" >>"$output_file"
           done
 
           find "logs" -name "dockerhub-mirrors-*.md" -type f -mtime +30 -exec rm {} \;
