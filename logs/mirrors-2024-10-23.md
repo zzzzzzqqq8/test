@@ -1,43 +1,43 @@
-# DockerHub 镜像仓库测试结果 (2024-10-23)
+# DockerHub 镜像测试结果 (2024-10-23)
 
-| DockerHub 镜像仓库 | 状态 | 下载时间 (秒) |
-| ------------------ | ---- | ------------- |
-| hub.firefly.store | ✅ 正常 | 1.121 |
-| dockerproxy.net | ✅ 正常 | 1.609 |
-| docker.1panel.live | ✅ 正常 | 1.772 |
-| dislabaiot.xyz | ✅ 正常 | 1.881 |
-| registry.dockermirror.com | ✅ 正常 | 1.895 |
-| freeno.xyz | ✅ 正常 | 1.929 |
-| docker.actima.top | ✅ 正常 | 1.936 |
-| doublezonline.cloud | ✅ 正常 | 1.952 |
-| docker.zhai.cm | ✅ 正常 | 2.003 |
-| ginger20240704.asia | ✅ 正常 | 2.015 |
-| dockerpull.com | ✅ 正常 | 2.036 |
-| docker.211678.top | ✅ 正常 | 2.094 |
-| docker.wanpeng.top | ✅ 正常 | 2.108 |
-| hub.rat.dev | ✅ 正常 | 2.157 |
-| docker.nastool.de | ✅ 正常 | 2.166 |
-| a.ussh.net | ✅ 正常 | 2.252 |
-| docker.xn--6oq72ry9d5zx.cn | ✅ 正常 | 2.252 |
-| docker.mrxn.net | ✅ 正常 | 2.380 |
-| hub.geekery.cn | ✅ 正常 | 2.463 |
-| docker.kejilion.pro | ✅ 正常 | 3.199 |
-| dockerproxy.cn | ✅ 正常 | 3.217 |
-| docker.awsl9527.cn | ✅ 正常 | 3.428 |
-| docker.registry.cyou | ✅ 正常 | 3.893 |
-| docker-cf.registry.cyou | ✅ 正常 | 4.399 |
-| hub.crdz.gq | ✅ 正常 | 4.505 |
-| docker.1panel.dev | ✅ 正常 | 4.789 |
-| dockercf.jsdelivr.fyi | ✅ 正常 | 4.854 |
-| docker.jsdelivr.fyi | ✅ 正常 | 5.604 |
-| dockertest.jsdelivr.fyi | ✅ 正常 | 6.480 |
-| docker.anyhub.us.kg | ✅ 正常 | 7.077 |
-| hub.xdark.top | ✅ 正常 | 7.115 |
-| docker.m.daocloud.io | ✅ 正常 | 7.368 |
-| dockerproxy.com | ✅ 正常 | 9.612 |
-| dhub.kubesre.xyz | ✅ 正常 | 9.848 |
-| hub.dockerx.org | ✅ 正常 | 14.144 |
-| docker.chenby.cn | ❌ 失败 | 0.284 |
-| docker.fxxk.dedyn.io | ❌ 失败 | 0.551 |
-| hub.littlediary.cn | ❌ 失败 | 16.400 |
-| lynn520.xyz | ❌ 失败 | 50.086 |
+|  镜像  |  状态  |  时间  |
+| :----: | :----: | :----: |
+| dislabaiot.xyz | ✅ | 0.630 |
+| doublezonline.cloud | ✅ | 0.669 |
+| freeno.xyz | ✅ | 0.695 |
+| ginger20240704.asia | ✅ | 0.757 |
+| docker.1panel.live | ✅ | 0.805 |
+| docker.nastool.de | ✅ | 0.832 |
+| a.ussh.net | ✅ | 0.858 |
+| docker.awsl9527.cn | ✅ | 0.926 |
+| docker.zhai.cm | ✅ | 0.946 |
+| dockerpull.com | ✅ | 0.950 |
+| docker.211678.top | ✅ | 0.953 |
+| docker.wanpeng.top | ✅ | 0.953 |
+| docker.actima.top | ✅ | 0.954 |
+| docker.mrxn.net | ✅ | 0.955 |
+| hub.rat.dev | ✅ | 0.982 |
+| docker.xn--6oq72ry9d5zx.cn | ✅ | 1.089 |
+| hub.geekery.cn | ✅ | 1.232 |
+| docker.1panel.dev | ✅ | 2.017 |
+| registry.dockermirror.com | ✅ | 2.320 |
+| hub.firefly.store | ✅ | 2.360 |
+| dockerproxy.net | ✅ | 2.417 |
+| dockerproxy.cn | ✅ | 2.544 |
+| docker.kejilion.pro | ✅ | 3.452 |
+| docker.registry.cyou | ✅ | 3.834 |
+| docker-cf.registry.cyou | ✅ | 5.063 |
+| docker.anyhub.us.kg | ✅ | 5.098 |
+| docker.jsdelivr.fyi | ✅ | 5.100 |
+| dockercf.jsdelivr.fyi | ✅ | 5.892 |
+| dockertest.jsdelivr.fyi | ✅ | 5.899 |
+| hub.crdz.gq | ✅ | 6.418 |
+| docker.m.daocloud.io | ✅ | 7.527 |
+| dhub.kubesre.xyz | ✅ | 7.560 |
+| hub.xdark.top | ✅ | 7.733 |
+| dockerproxy.com | ✅ | 8.860 |
+| hub.dockerx.org | ✅ | 13.767 |
+| docker.chenby.cn | ❌ | 0.395 |
+| docker.fxxk.dedyn.io | ❌ | 0.784 |
+| hub.littlediary.cn | ❌ | 16.749 |
+| lynn520.xyz | ❌ | 50.059 |
