@@ -27,10 +27,10 @@ jobs:
           image="library/busybox:latest"
 
           {
-            echo "# DockerHub 镜像仓库测试结果 (${date_suffix})"
+            echo "# DockerHub 镜像测试结果 (${date_suffix})"
             echo ""
-            echo "| DockerHub 镜像仓库 | 状态 | 下载时间 (秒) |"
-            echo "| ------------------ | ---- | ------------- |"
+            echo "|  镜像  |  状态  |  时间  |"
+            echo "| :----: | :----: | :----: |"
           } > $output_file
 
           success_records=()
@@ -41,9 +41,9 @@ jobs:
             start_time=$(date +%s%3N)
 
             if docker pull $mirror/$image; then
-              status="✅ 正常"
+              status="✅"
             else
-              status="❌ 失败"
+              status="❌"
             fi
 
             end_time=$(date +%s%3N)
@@ -51,7 +51,7 @@ jobs:
             formatted_elapsed_time=$(printf "%.3f" $elapsed_time)
 
             record="$mirror | $status | $formatted_elapsed_time"
-            if [ "$status" = "✅ 正常" ]; then
+            if [ "$status" = "✅" ]; then
               success_records+=("$record")
             else
               fail_records+=("$record")
