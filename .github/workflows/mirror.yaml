@@ -22,6 +22,56 @@ jobs:
 
       - name: Test Mirrors
         run: |
+          date_suffix=$(date +"%Y-%m-%d")
+          output_file="logs/dockerhub-mirrors-${date_suffix}.md"
+          image="library/busybox:latest"
+
+          echo "# DockerHub 镜像仓库测试结果 (${date_suffix})" > $output_file
+          echo "" >> $output_file
+          echo "| DockerHub 镜像仓库 | 状态 | 下载时间 (秒) |" >> $output_file
+          echo "| ------------------ | ---- | ------------- |" >> $output_file
+
+          success_records=()
+          fail_records=()
+
+          while IFS= read -r mirror
+          do
+             echo "正在测试 $mirror"
+             start_time=$(date +%s%3N)
+             docker pull $mirror/$image || true
+             pull_exit_code=$?
+
+             end_time=$(date +%s%3N)
+             elapsed_time_ms=$((end_time - start_time))
+             elapsed_time=$(echo "scale=3; $elapsed_time_ms/1000" | bc)
+
+             if [ $pull_exit_code -eq 0 ]; then
+               status="✅ 正常"
+               success_records+=("| $mirror | $status | $elapsed_time |")
+             else
+               status="❌ 失败"
+               fail_records+=("| $mirror | $status | $elapsed_time |")
+             fi
+
+             docker rmi $mirror/$image || true
+          done < docs/dockerhub-mirrors.txt
+
+          IFS=$'\n' sorted_success=($(sort -t '|' -k 3 -n <<<"${success_records[*]}"))
+
+          for record in "${sorted_success[@]}"; do
+            echo "$record" >>"$output_file"
+          done
+
+          for record in "${fail_records[@]}"; do
+            echo "$record" >>"$output_file"
+          done
+
           find logs -name "dockerhub-mirrors-*.md" -type f -mtime +30 -exec rm {} \;
 
+          cp -af "$output_file" "./README.md"
           echo "TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+
+      - name: Upload to repository
+        uses: stefanzweifel/git-auto-commit-action@master
+        with:
+          commit_message: ${{ env.TIME }}
