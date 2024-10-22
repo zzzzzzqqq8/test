@@ -38,7 +38,7 @@ jobs:
           do
              echo "正在测试 $mirror"
              start_time=$(date +%s%3N)
-             docker pull $mirror/$image
+             docker pull $mirror/$image || true
 
              if [ $? -eq 0 ]; then
                status="✅ 正常"
