@@ -39,18 +39,17 @@ jobs:
              echo "正在测试 $mirror"
              start_time=$(date +%s%3N)
              docker pull $mirror/$image || true
+             pull_exit_code=$?
 
-             if [ $? -eq 0 ]; then
+             end_time=$(date +%s%3N)
+             elapsed_time_ms=$((end_time - start_time))
+             elapsed_time=$(echo "scale=3; $elapsed_time_ms/1000" | bc)
+
+             if [ $pull_exit_code -eq 0 ]; then
                status="✅ 正常"
-               end_time=$(date +%s%3N)
-               elapsed_time_ms=$((end_time - start_time))
-               elapsed_time=$(echo "scale=3; $elapsed_time_ms/1000" | bc)
                success_records+=("| $mirror | $status | $elapsed_time |")
              else
                status="❌ 失败"
-               end_time=$(date +%s%3N)
-               elapsed_time_ms=$((end_time - start_time))
-               elapsed_time=$(echo "scale=3; $elapsed_time_ms/1000" | bc)
                fail_records+=("| $mirror | $status | $elapsed_time |")
              fi
 
@@ -68,6 +67,7 @@ jobs:
           done
 
           find "logs/dockerhub-mirrors-*.md" -type f -mtime +30 -exec rm {} \;
+
           cp -af "$output_file" "./README.md"
           echo "TIME=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
 
