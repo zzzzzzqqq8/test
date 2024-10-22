@@ -17,7 +17,7 @@ jobs:
       - name: Invoke workflow without inputs
         uses: benc-uk/workflow-dispatch@master
         with:
-          workflow: Registry
+          workflow: Mirror
 
       - name: Delete old workflow runs
         uses: Mattraks/delete-workflow-runs@main
