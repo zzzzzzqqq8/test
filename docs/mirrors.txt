@@ -87,6 +87,7 @@ https://ghproxy.cianogame.top
 https://ghproxy.cn
 https://ghproxy.homeboyc.cn
 https://ghproxy.lainbo.com
+https://ghproxy.lvedong.eu.org
 https://ghproxy.mengluowusheng.workers.dev
 https://ghproxy.net
 https://ghproxy.org
