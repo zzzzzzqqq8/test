@@ -23,7 +23,7 @@ jobs:
       - name: Test Mirrors
         run: |
           date_suffix=$(date +"%Y-%m-%d")
-          output_file="logs/dockerhub-mirrors-${date_suffix}.md"
+          output_file="logs/mirrors-${date_suffix}.md"
           image="library/busybox:latest"
 
           {
@@ -58,7 +58,7 @@ jobs:
             fi
 
             docker rmi $mirror/$image || true
-          done < docs/dockerhub-mirrors.txt
+          done < docs/mirrors.txt
 
           IFS=$'\n' sorted_success=($(sort -t '|' -k 3 -n <<<"${success_records[*]}"))
           for record in "${sorted_success[@]}"; do
@@ -70,7 +70,7 @@ jobs:
             echo "| $record |" >> $output_file
           done
 
-          find "logs" -name "dockerhub-mirrors-*.md" -type f -mtime +30 -exec rm {} \;
+          find "logs" -name "mirrors-*.md" -type f -mtime +30 -exec rm {} \;
 
           cp -af "$output_file" "README.md"
 
