@@ -3,7 +3,7 @@
 | Registry URL | Status |
 | ------------ | ------ |
 | a.ussh.net | ✅ Good |
-| dhub.kubesre.xyz | ❌ Outdated |
+| dhub.kubesre.xyz | ✅ Good |
 | dislabaiot.xyz | ✅ Good |
 | docker-cf.registry.cyou | ✅ Good |
 | docker.1panel.dev | ✅ Good |
@@ -32,6 +32,6 @@
 | hub.dockerx.org | ✅ Good |
 | hub.geekery.cn | ✅ Good |
 | hub.rat.dev | ✅ Good |
-| hub.xdark.top | ✅ Good |
-| lynn520.xyz | ✅ Good |
+| hub.xdark.top | ❌ Outdated |
+| lynn520.xyz | ❌ Outdated |
 | registry.dockermirror.com | ✅ Good |
