@@ -24,7 +24,7 @@ jobs:
         run: |
           date_suffix=$(date +"%Y-%m-%d")
           output_file="logs/mirrors-${date_suffix}.md"
-          image="library/busybox:latest"
+          image="library/alpine:latest"
 
           {
             echo "# DockerHub 镜像测试结果 (${date_suffix})"
